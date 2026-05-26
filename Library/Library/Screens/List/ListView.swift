@@ -73,7 +73,7 @@ struct ListView: View{
             // Button pro zapnuti modalniho okna pro pridani lokace
             .toolbar {
                 Button {
-                    //isNewMapItemViewPresented = true
+                    isAddLoanPresented = true
                 } label: {
                     Image(systemName: "plus")
                         .foregroundColor(.black)
@@ -83,20 +83,20 @@ struct ListView: View{
             .toolbarBackground(.white, for: .navigationBar)
             
         }
-        //.sheet(isAddLoanPresented){
-            
+        .sheet(isPresented: $isAddLoanPresented){
+            showAddLoan()
         }
     }
-    /*
+    
     //Modalni okno loan
-    private func showMapItem(_ selectedBook: Book) -> some View {
+    private func showAddLoan() -> some View {
         NavigationStack {
-            addLoan(viewModel: DetailViewModel(mapItem: selectedItem))
-                .navigationTitle(selectedItem.title)
+            AddLoanView(viewModel: viewModel)
+                .navigationTitle("Add Loan")
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button("Close") {
-                            isDetailPresented = false
+                            isAddLoanPresented = false
                         }
                     }
                 }
@@ -104,4 +104,4 @@ struct ListView: View{
         .presentationDetents([.large])
         .presentationBackground(Color(.systemBackground))
     }
-}*/
+}

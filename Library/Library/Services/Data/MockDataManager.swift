@@ -18,24 +18,17 @@ final class MockDataManager: DataManaging{
         func addLoan(to book: Book, readerName: String, dueDate: Date) {
             // Najdeme index knihy v lokálním poli podle ID
             if let index = books.firstIndex(where: { $0.id == book.id }) {
-                
-                // Vytvoříme novou zápůjčku
-                let newLoan = Loan(
-                    borrowerName: readerName,
-                    borrowed: Date(),
-                    borrowedUntil: dueDate
-                )
-                
-                // Nahradíme knihu v poli její aktualizovanou verzí
-                let existingBook = books[index]
-                books[index] = Book(
-                    id: existingBook.id,
-                    title: existingBook.title,
-                    genre: existingBook.genre,
-                    author: existingBook.author,
-                    loan: newLoan
-                )
-            }
+                    
+                    let newLoan = Loan(
+                        borrowerName: readerName,
+                        borrowed: Date(),
+                        borrowedUntil: dueDate
+                    )
+                    
+                    // Místo vytváření nové instance Book stačí upravit stávající.
+                    // Tím pádem coverImageName (a případné další budoucí parametry) zůstanou nedotčené.
+                    books[index].loan = newLoan
+                }
         }
         
         // 3. Vrácení knihy (načtení detailu s loanem z paměti)

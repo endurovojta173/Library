@@ -11,6 +11,7 @@ import SwiftUI
 class DetailViewModel{
     var state: DetailViewState
     
+    
     private var dataManager: DataManaging
 
     //Preda knihu z listu do detail statu

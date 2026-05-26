@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24299" systemVersion="25D2128" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="BookEntity" representedClassName="BookEntity" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="coverImageName" optional="YES" attributeType="String"/>
         <attribute name="genre" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>

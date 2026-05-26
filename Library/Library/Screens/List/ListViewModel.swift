@@ -30,4 +30,12 @@ class ListViewModel{
         return components.day ?? 0
     }
     
+    func addLoan(to book: Book, readerName: String, dueDate: Date) {
+            // 1. Zápis do CoreData / MockDataManageru
+            dataManager.addLoan(to: book, readerName: readerName, dueDate: dueDate)
+            
+            // 2. ⚠️ KLÍČOVÝ KROK: Znovu načíst data, aby SwiftUI vědělo o změně
+            fetchBooks()
+        }
+    
 }

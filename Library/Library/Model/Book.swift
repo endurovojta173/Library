@@ -5,14 +5,16 @@
 //  Created by endurovojta173 on 25.05.2026.
 //
 import SwiftUI
-
-struct Book: Identifiable{
+//Hashable kvuli dropdownu
+struct Book: Identifiable, Hashable{
     var id: UUID = UUID()
     var title: String
     var genre: Genre
     var author: String
     //Optional loan of book
     var loan: Loan?
+    //Cover image
+    var coverImageName: String?
     
     static func getSample() -> Book {
         .init(
@@ -23,7 +25,8 @@ struct Book: Identifiable{
                         borrowerName: "Pepa z Kralic",
                         borrowed: Date(),
                         borrowedUntil: Calendar.current.date(byAdding: .day, value: 14, to: Date())!
-                    )
+                    ),
+            coverImageName: "hobit_cover"
         )
     }
     static func getSample2() -> Book {

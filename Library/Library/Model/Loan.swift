@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Loan: Identifiable{
+struct Loan: Identifiable, Hashable{
     var id: UUID = UUID()
     var borrowerName: String
     var borrowed: Date
