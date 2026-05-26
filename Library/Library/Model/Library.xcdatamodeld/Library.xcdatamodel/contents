@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24299" systemVersion="25D2128" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="BookEntity" representedClassName="BookEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="loan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoanEntity" inverseName="book" inverseEntity="LoanEntity"/>
+    </entity>
+    <entity name="LoanEntity" representedClassName="LoanEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="borrowed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="borrowedUntil" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="borrowerName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookEntity" inverseName="loan" inverseEntity="BookEntity"/>
+    </entity>
+</model>
