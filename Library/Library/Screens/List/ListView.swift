@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListView: View{
     @State private var viewModel: ListViewModel
+    @State private var isAddLoanPresented: Bool = false
     
     init(viewModel: ListViewModel) {
         self.viewModel = viewModel
@@ -80,6 +81,27 @@ struct ListView: View{
             }
             // Bile pozadi navbaru
             .toolbarBackground(.white, for: .navigationBar)
+            
+        }
+        //.sheet(isAddLoanPresented){
+            
         }
     }
-}
+    /*
+    //Modalni okno loan
+    private func showMapItem(_ selectedBook: Book) -> some View {
+        NavigationStack {
+            addLoan(viewModel: DetailViewModel(mapItem: selectedItem))
+                .navigationTitle(selectedItem.title)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Close") {
+                            isDetailPresented = false
+                        }
+                    }
+                }
+        }
+        .presentationDetents([.large])
+        .presentationBackground(Color(.systemBackground))
+    }
+}*/

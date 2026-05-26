@@ -115,7 +115,11 @@ final class CoreDataManager: DataManaging{
         // Fallback: Pokud se načtení z DB nepovede, vrátí se původní kniha
         return book
     }
+    func freeBook(_ book: Book)->Book{
+        return .getSample()
+    }
 }
+
 
 
 // MARK: Private methods

@@ -17,19 +17,41 @@ struct DetailView: View{
     var body: some View{
         NavigationStack{
             VStack{
-               Text("Book")
-                Text(viewModel.state.book.title)
+                Section(header: Text("Book")) {
+                    Text(viewModel.state.book.title)
+                }
+                Section(header: Text("Author")) {
+                    Text(viewModel.state.book.author)
+                }
+                Section(header: Text("Reader")) {
+                    Text(viewModel.state.book.loan?.borrowerName ?? "Not borrowed")
+                }
+                HStack{
+                    Section(header: Text("Borrowed")) {
+                        Text(viewModel.state.book.loan?.borrowed.formatted(date: .numeric, time: .omitted) ?? "Not borrowed")
+                    }
+                    Section(header: Text("Until")) {
+                        Text(viewModel.state.book.loan?.borrowedUntil.formatted(date: .numeric, time: .omitted) ?? "Not borrowed")
+                    }
+                    
+                }
+                
+
             }
             // Title navigace
-            .navigationTitle("Library")
+            .navigationTitle("Loan")
             // Button pro zapnuti modalniho okna pro pridani lokace
             .toolbar {
-                Button {
-                    //isNewMapItemViewPresented = true
-                } label: {
-                    Image(systemName: "plus")
-                        .foregroundColor(.black)
+                if((viewModel.state.book.loan) == nil){
+                        Text("Returned")
+                }else{
+                    Button {
+                        viewModel.freeBook()
+                    } label: {
+                        Text("Taken")
+                    }
                 }
+                
             }
             // Bile pozadi navbaru
             .toolbarBackground(.white, for: .navigationBar)

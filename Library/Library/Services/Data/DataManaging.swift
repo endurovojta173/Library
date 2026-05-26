@@ -16,5 +16,7 @@ protocol DataManaging{
         
         // 3. Vrácení knihy (tlačítko Returned v detailu)
         func returnBook(_ book: Book) -> Book
-        
+    
+    //Meni taken stav
+    func freeBook(_ book: Book)->Book
 }

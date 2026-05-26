@@ -8,10 +8,10 @@ import SwiftUI
 import CoreData
 
 final class MockDataManager: DataManaging{
-    private var books: [Book] = [Book.getSample()]
+    private var books: [Book] = Book.getSamples()
     
     func fetchBooks() -> [Book]{
-        return Book.getSamples()
+        return books
     }
     
     // 2. Uložení nové výpůjčky
@@ -46,5 +46,13 @@ final class MockDataManager: DataManaging{
             }
             return book
         }
+    
+    func freeBook(_ book: Book)->Book{
+        if let index = books.firstIndex(where: { $0.id == book.id }) {
+            books[index].loan = nil
+            return books[index]
+        }
+        return .getSample()
+    }
 }
 
